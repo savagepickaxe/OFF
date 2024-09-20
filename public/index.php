@@ -1,4 +1,7 @@
 
+<?php $niveau="./";?>
+<?php include ($niveau . "liaisons/php/config.inc.php");?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,27 +11,26 @@
 	<meta name="author" content="">
 	<meta charset="utf-8">
 	<title>Un beau titre ici!</title>
-	<link rel="stylesheet" href="liaisons/css/styles.css">
+	<?php include ($niveau . "liaisons/fragments/headlinks.inc.html");?>
 </head>
 
 <body>
-<?php
-echo "Projet OFF!";
-?>
-	<header>
-	 <h1>Entête de site</h1>   
-	 <nav class="menu menu--ferme">
-            <ul class="menu__liste">
-                <li class="menu__listeItem"><a href="#" class="menu__lien">Accueil</a></li>
-                <li class="menu__listeItem"><a href="#" class="menu__lien">Niveau 1</a></li>
-                <li class="menu__listeItem"><a href="#" class="menu__lien">Niveau 2</a></li>
-            </ul>
-        </nav>
-	</header>
+
+	<?php include ($niveau . "liaisons/fragments/entete.inc.php");?>
 
 	<main>
 		<div id="contenu" class="conteneur">
 			<h2>Entête de page</h2>
+
+			<?php
+			$requeteSQL="Select titre from actualites";
+			$objStat=$objPdo -> prepare($requeteSQL);
+			$objStat -> execute();
+			$arrActualite=$objStat -> fetchAll();
+			forEach($arrActualite as $actualite){
+				echo $actualite["titre"];?><BR>
+			<?php } ?>
+
 			<section>
 				<h3>Entête de section</h3>
 				<article>
@@ -64,10 +66,8 @@ echo "Projet OFF!";
             <p>Lorem ipsum dolor nunc aut nunquam sit amet, consectetur adipiscing elit. Vivamus at est eros, vel fringilla urna. Pellentesque odio rhoncus</p>
 	</aside>
 	
-	<footer>
-		<h3>Pied de page</h3>
-		<p>Lorem ipsum dolor nunc aut nunquam sit amet, consectetur adipiscing elit. Vivamus at est eros, vel fringilla urna. Pellentesque odio rhoncus</p>
-	</footer>
-	<script src="liaisons/js/_menu.js"></script>
+	
+	<?php include ($niveau . "liaisons/fragments/piedDePage.inc.php");?>
+
 </body>
 </html>
