@@ -11,9 +11,6 @@
     "festival",
     "OFF"
   ],
-  "author": "Michel Rouleau",
+  "author": "Votre nom ici!",
   "license": "ISC",
-  "dependencies": {
-    "normalize.scss": "^0.1.0"
-  }
 }
